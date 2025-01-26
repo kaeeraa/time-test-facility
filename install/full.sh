@@ -1,0 +1,1 @@
+./install/build.sh && ./install/install.sh && ./install/run.sh
