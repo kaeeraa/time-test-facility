@@ -1,0 +1,6 @@
+.direnv/
+.mypy_cache/
+.vscode/
+build/
+*.pyc
+__pycache__
