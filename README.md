@@ -8,15 +8,19 @@ Hello! This is the time test facility. Here you can see time difference between 
 
 1. Open repository [Github Actions](https://github.com/kaeeraa/time-test-facility/actions)
 2. Click on latest workflow
-3. Check out "Artifacts" and then download `result.html`
-4. Open `result.html`
+3. Not ready yet.
 
 ### Check offline
 
 1. Clone repository
-2. Run `sh install/build.sh`
-3. Run `sh install/run.sh`
-4. Open `result.html` located in `install/generated/` directory
+2. Cd into cloned repository
+3. Run `chmod -R +x install`
+4. - Auto:
+      1. Run `./install/full.sh`
+   - Manual:
+      1. Run `./install/build.sh`
+      2. Run `./install/install.sh`
+      3. Run `./install/run.sh`
 
 ## Credits
 
