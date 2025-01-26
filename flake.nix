@@ -18,6 +18,7 @@
           pkgs = nixpkgs.legacyPackages.${system};
           pythonEnv = pkgs.python312.withPackages (ps: [
             ps.numba
+            ps.numpy
           ]);
         in
         {
