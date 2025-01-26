@@ -4,30 +4,39 @@
   outputs =
     { self, nixpkgs }:
     let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
 
-      pythonEnv = pkgs.python312.withPackages (ps: [
-        ps.numba
-      ]);
+      forAllSystems = nixpkgs.lib.genAttrs systems;
     in
     {
-      devShells.${system}.default = pkgs.mkShell {
-        nativeBuildInputs = [
-          pkgs.cmake
-          pkgs.gtest
-          pkgs.python312
-          pkgs.openssl
-          pythonEnv
-        ];
-
-        shellHook = ''
-          echo "Python version: $(python3.12 --version)"
-
-          mkdir -p build
-          cd build
-          cmake ..
-        '';
-      };
+      devShells = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+          pythonEnv = pkgs.python312.withPackages (ps: [
+            ps.numba
+          ]);
+        in
+        {
+          default = pkgs.mkShell {
+            nativeBuildInputs = [
+              pkgs.cmake
+              pkgs.gtest
+              pkgs.python312
+              pkgs.openssl
+              pythonEnv
+            ];
+            shellHook = ''
+              echo "Python version: $(python3.12 --version)"
+              mkdir -p build
+              cd build
+              cmake ..
+            '';
+          };
+        }
+      );
     };
 }
