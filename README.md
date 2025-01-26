@@ -18,6 +18,10 @@ Hello! This is the time test facility. Here you can see time difference between 
 3. Run `sh install/run.sh`
 4. Open `result.html` located in `install/generated/` directory
 
+## Credits
+
+Code benchmarks was generated with [DeepSeek AI](https://deepseek.com). But it still open to contributions!
+
 ## License
 
 This project is released under the [MIT License](https://github.com/kaeeraa/time-test-facility/blob/master/LICENSE)
