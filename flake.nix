@@ -17,6 +17,7 @@
           pkgs.cmake
           pkgs.gtest
           pkgs.python312
+          pkgs.openssl
           pythonEnv
         ];
 
