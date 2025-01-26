@@ -1,0 +1,42 @@
+name: Benchmarking
+
+on:
+  workflow_dispatch:
+
+jobs:
+  benchmarking:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          [
+            ubuntu-24.04,
+            ubuntu-22.04,
+            ubuntu-20.04,
+            ubuntu-24.04-arm,
+            ubuntu-22.04-arm,
+          ]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Debug info
+        run: |
+          lscpu
+          free -h
+          df -h
+          cat /proc/cpuinfo
+          cat /proc/meminfo
+          cat /proc/sys/kernel/numa_balancing
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+      - name: Enter Nix develop
+        run: |
+          nix develop
+      - name: Chmod scripts
+        run: |
+          chmod -R +x install
+      - name: Run benchmark
+        run: |
+          ./install/full.sh
