@@ -8,13 +8,13 @@ fi
 
 echo "  Working directory: $(pwd)"
 
-echo "Running C++ benchmarking"
+echo "  Running C++ benchmarking"
 echo
 ./ttf-build/main
 
 echo "-----------------"
 
-echo "Running Python benchmarking"
+echo "  Running Python benchmarking"
 echo
 python3 ./ttf-build/main.py 2>/dev/null || python ./ttf-build/main.py || error=1
 
