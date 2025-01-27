@@ -1,1 +1,1 @@
-./install/build.sh && ./install/install.sh && ./install/run.sh
+(./install/build.sh && ./install/install.sh && ./install/run.sh) || exit 1
