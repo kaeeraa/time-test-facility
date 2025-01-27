@@ -16,7 +16,7 @@ echo "-----------------"
 
 echo "  Running Python benchmarking"
 echo
-python3.12 ./ttf-build/main.py 2>/dev/null || python ./ttf-build/main.py || error=1
+python3.12 ./ttf-build/main.py || error=1
 
 echo
 echo "#### time-test-facility Run ####"
