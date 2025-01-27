@@ -35,7 +35,10 @@ jobs:
       - name: Chmod scripts
         run: |
           chmod -R +x install
+      - name: Install direnv
+        run: |
+          nix profile install nixpkgs#direnv
       - name: Run benchmark
         run: |
-          nix develop
+          direnv allow .
           ./install/full.sh
